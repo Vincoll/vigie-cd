@@ -1,0 +1,14 @@
+# demo Kustomization
+
+bases:
+- grafana
+- influxdb
+- prometheus
+- vigie
+- ci
+
+resources:
+- namespace.yml
+
+# Adds namespace to all resources.
+namespace: vigie-demo-complete

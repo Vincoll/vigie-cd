@@ -1,0 +1,19 @@
+# demo/influxdb kustomization
+
+bases:
+- ../../../base/influxdb
+
+secretGenerator:
+- name: sc-influx-env
+  files:
+    - configs/influxdb.env
+  type: Opaque
+
+configMapGenerator:
+- name: cm-influxdb-config
+  files:
+    - configs/influxdb.conf
+
+- name: cm-influxdb-init
+  files:
+    - configs/init-vigie.iql

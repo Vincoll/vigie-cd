@@ -1,0 +1,3 @@
+resources:
+- influxdb-deployment.yaml
+- influxdb-service.yaml

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-httpbin
+  labels:
+    app: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: httpbin
+    spec:
+      restartPolicy: Always
+      containers:
+      - image: kennethreitz/httpbin:latest
+        name: httpbin
+        resources:
+          limits:
+            cpu: 60m
+            memory: 150Mi
+          requests:
+            cpu: 50m
+            memory: 80Mi

@@ -1,0 +1,23 @@
+# demo/grafana kustomization
+
+bases:
+- ../../../base/grafana
+
+configMapGenerator:
+- name: cm-grafana-config
+  files:
+    - configs/grafana.ini
+
+- name: cm-grafana-dashboard
+  files:
+    - configs/dashboard.yaml
+
+- name: cm-grafana-datasource
+  files:
+    - configs/datasource.yaml
+
+- name: cm-grafana-dashboards
+  files:
+    - configs/dashboards/golangRuntime.json
+    - configs/dashboards/vigieinstanceInflux.json
+    - configs/dashboards/vigieinstanceInfluxFlux.json

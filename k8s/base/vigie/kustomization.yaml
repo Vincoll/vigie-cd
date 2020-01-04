@@ -1,0 +1,5 @@
+# base/vigie kustomization
+
+resources:
+- vigie-deployment.yaml
+- vigie-service.yaml

@@ -1,0 +1,5 @@
+resources:
+- httpbin-deployment.yaml
+- httpbin-service.yaml
+- nginx-deployment.yaml
+- nginx-service.yaml

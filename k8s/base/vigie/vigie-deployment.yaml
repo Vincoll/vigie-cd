@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vigie
+  labels:
+    app: vigie
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: vigie
+  template:
+    metadata:
+      labels:
+        app: vigie
+    spec:
+      restartPolicy: Always
+      # CONTAINERS
+      containers:
+      - name: vigie
+        imagePullPolicy: Always
+        image: vincoll/vigie:null
+        args:
+        - run
+        - --config
+        - /app/config/vigie.toml
+
+        # PROBES
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 1
+          periodSeconds: 3
+          failureThreshold: 30
+          timeoutSeconds: 1
+
+        # livenessProbe:
+        #   httpGet:
+        #     path: /health
+        #     port: 80
+        #     scheme: HTTP
+        #   initialDelaySeconds: 1
+        #   periodSeconds: 3
+        #   failureThreshold: 30
+        #   timeoutSeconds: 1
+        
+
+        # RESSOURCES
+        resources:
+          limits:
+            cpu: 1500m
+            memory: 150Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+
+        # Mounts
+        volumeMounts:
+        - name: cm-vigie-config
+          mountPath: /app/config/vigie.toml
+          subPath: vigie.toml
+          readOnly: false
+
+      # Volumes
+      volumes:
+        - name: cm-vigie-config
+          configMap:
+            name: cm-vigie-config

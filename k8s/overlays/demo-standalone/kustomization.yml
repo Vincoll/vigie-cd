@@ -1,0 +1,15 @@
+# Kustomization Vigie Demo Standalone
+
+bases:
+- vigie
+- ci
+
+resources:
+- namespace.yml
+
+# Adds namespace to all resources.
+namespace: vigie-demo-standalone
+
+# Labels to add to all resources and selectors.
+# commonLabels:
+#   env: demo-standalone

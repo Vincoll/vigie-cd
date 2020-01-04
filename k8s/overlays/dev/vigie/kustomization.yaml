@@ -1,0 +1,12 @@
+# demo/vigie kustomization
+
+bases:
+- ../../../base/vigie
+
+patchesStrategicMerge:
+- vigie-image-patch.yaml
+
+configMapGenerator:
+- name: cm-vigie-config
+  files:
+    - configs/vigie.toml

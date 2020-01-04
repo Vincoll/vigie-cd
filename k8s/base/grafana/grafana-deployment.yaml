@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  labels:
+    app: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      restartPolicy: Always
+
+      # CONTAINERS
+      containers:
+      - name: grafana
+        image: grafana/grafana:6.5.2
+        env:
+          - name: GF_INSTALL_PLUGINS
+            value: "grafana-influxdb-flux-datasource,ovh-warp10-datasource"
+
+        # RESSOURCES
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "300Mi"
+            cpu: "1000m"
+
+        # CONTAINER MOUNTS
+        volumeMounts:
+        - name: cm-grafana-datasource
+          mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
+          subPath: datasource.yaml
+          readOnly: true
+        - name: cm-grafana-dashboard
+          mountPath: /etc/grafana/provisioning/dashboards/dashboard.yaml
+          subPath: dashboard.yaml
+          readOnly: true
+        - name: cm-grafana-config
+          mountPath: /etc/grafana/grafana.ini
+          subPath: grafana.ini
+          readOnly: true
+        - name: cm-grafana-dashboards
+          mountPath: /etc/grafana/provisioning/dashboards/vigie
+          readOnly: true
+
+      # VOLUMES
+      volumes:
+      - name: cm-grafana-config
+        configMap:
+          name: cm-grafana-config
+      - name: cm-grafana-datasource
+        configMap:
+          name: cm-grafana-datasource
+      - name: cm-grafana-dashboard
+        configMap:
+          name: cm-grafana-dashboard
+      - name: cm-grafana-dashboards
+        configMap:
+          name: cm-grafana-dashboards

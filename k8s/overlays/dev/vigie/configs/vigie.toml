@@ -1,0 +1,68 @@
+vigieAPI = 0.5
+environment = "dev"
+
+# Get Tests and Variables from a Git Repo instead of localy
+# Git clone without the repo parent name folder
+
+[host]
+  name = "Dev"
+  url = "http://vigie.dev.vigie.dev"
+  [host.tags]
+    k1 = "v1"
+
+[git]
+  clone = true
+  repo = "https://github.com/Vincoll/vigie-demo-test"
+  path = "/tmp/vigie"
+
+[testfiles]
+  included = ['/tmp/vigie/test']
+  excluded = ['']
+
+[variables]
+  variables = ['','']
+  included = ['/tmp/vigie/var']
+  excluded = ['']
+  fromenv = false
+
+[api]
+  enable = true
+  port = 80
+
+[log]
+  stdout = true
+  logfile = false
+  level = "debug"
+  filePath = "/tmp/vigie.log"
+
+[influxdb]
+  enable = true
+  addr = "http://influxdb:8086"
+  user = "user"
+  password = "user"
+  database = "vigie"
+
+[prometheus]
+  enable = true
+  gometrics = true
+  port = 9000
+
+[alerting]
+  enable = false
+  interval = "12s"
+  reminder = "1h"
+  [alerting.email]
+    to = "vince.gsm@gmail.com"
+    from = "vincoll@vincoll.io"
+    username = "vincoll@vincoll.io"
+    password = "Ne38nus5W5t6"
+    smtp  = "ssl0.ovh.net"
+    port = 587
+  [alerting.slack]
+    hook = ""
+  [alerting.discord]
+    hook = "https://discordapp.com/api/webhooks/508396601631309855/ChGbLNXcqW2BAuntNe3eHR_VeGCkZ8225RUwOZzqn4MGwPmMTs_HpCq8oVgNfeeMz9m6"
+    dev-channel = ""
+    debug-channel = ""
+  [alerting.webhook]
+    hook = ""

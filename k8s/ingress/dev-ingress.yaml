@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-dev
+  namespace: vigie-dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  rules:
+  - host: grafana.dev.vigie.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: http
+  - host: vigie.dev.vigie.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: vigie
+          servicePort: http
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-demo-complete
+  namespace: vigie-demo-complete
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+spec:
+  rules:
+  - host: vigie.demo.vigie.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: vigie
+          servicePort: http
+  - host: grafana.demo.vigie.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: http
