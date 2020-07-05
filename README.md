@@ -9,10 +9,9 @@ This k8s deployement is used by the [Vigie Demo](https://vigie.dev/demo.html) wi
 The deployement is well structured, but do not include any security.  
 Vigie is still in alpha state, secrets management are not my main concern.
 
-
-| **Included**                                                                              | **Not Included**                  |   |   |   |
-|-------------------------------------------------------------------------------------------|-----------------------------------|---|---|---|
-| Quick start config<br>Wiring between services<br>  * Vigie<br>  * Grafana<br>  * InfluxDB <br> * Prometheus  | Data persistance<br>Security|   |   |   |
+| **Included**                                                                              | **Not Included**                  |
+|-------------------------------------------------------------------------------------------|-----------------------------------|
+| Quick start config<br>Wiring between services<br>  * Vigie<br>  * Grafana<br>  * InfluxDB <br> * Prometheus  | Data persistance<br>Security|  
 
 ## Start Deploy
 
@@ -24,4 +23,4 @@ Vigie is still in alpha state, secrets management are not my main concern.
 
 * Vigie + Grafana + InfluxDB
 
-*Wich mode to chose ? [(Doc)](https://docs.vigie.dev/configuration/modes/)*
+*which mode to chose ? [(Doc)](https://docs.vigie.dev/configuration/modes/)*
