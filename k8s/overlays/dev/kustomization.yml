@@ -7,7 +7,6 @@ bases:
 - prometheus
 - vigie
 - ntwtools
-- ingress
 
 resources:
 - namespace.yml
