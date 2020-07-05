@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-dev
+  namespace: vigie-dev
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: grafana.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: http
+  - host: vigie.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: vigie
+          servicePort: http

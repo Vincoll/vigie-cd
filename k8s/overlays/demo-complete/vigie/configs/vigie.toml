@@ -10,20 +10,24 @@ environment = "dev"
   [host.tags]
     k1 = "v1"
 
-[git]
-  clone = true
-  repo = "https://github.com/Vincoll/vigie-demo-test"
-  path = "/tmp/vigie"
+# Get Tests and Variables from a Git Repo instead of localy
+# Git clone without the repo parent name folder
+[import]
+  frequency = "1h"
+  [import.git]
+    clone = true
+    repo = "https://github.com/Vincoll/vigie-demo-test"
+    path = "/tmp/vigie/git"
 
-[testfiles]
-  included = ['/tmp/vigie/test']
-  excluded = ['']
+  [import.testfiles]
+    included = ['/tmp/vigie/git/test/']
+    excluded = ['']
 
-[variables]
-  variables = ['','']
-  included = ['/tmp/vigie/var']
-  excluded = ['']
-  fromenv = false
+  [import.variables]
+    variables = ['','']
+    included = ['/tmp/vigie/git/var/']
+    excluded = ['']
+    fromenv = false
 
 [api]
   enable = true
@@ -33,6 +37,7 @@ environment = "dev"
   stdout = true
   logfile = false
   level = "debug"
+  format = ""
   filePath = "/tmp/vigie.log"
 
 [influxdb]
@@ -52,16 +57,16 @@ environment = "dev"
   interval = "12s"
   reminder = "1h"
   [alerting.email]
-    to = "vince.gsm@gmail.com"
+    to = ""
     from = "vincoll@vincoll.io"
     username = "vincoll@vincoll.io"
-    password = "Ne38nus5W5t6"
+    password = "*"
     smtp  = "ssl0.ovh.net"
     port = 587
   [alerting.slack]
     hook = ""
   [alerting.discord]
-    hook = "https://discordapp.com/api/webhooks/508396601631309855/ChGbLNXcqW2BAuntNe3eHR_VeGCkZ8225RUwOZzqn4MGwPmMTs_HpCq8oVgNfeeMz9m6"
+    hook = "https://discordapp.com/api/webhooks/508396601631309855/*"
     dev-channel = ""
     debug-channel = ""
   [alerting.webhook]

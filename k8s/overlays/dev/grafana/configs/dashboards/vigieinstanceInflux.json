@@ -5,7 +5,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "6.5.2"
+      "version": "6.6.2"
     },
     {
       "type": "panel",
@@ -53,9 +53,9 @@
   },
   "editable": true,
   "gnetId": null,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "id": null,
-  "iteration": 1578088838776,
+  "iteration": 1582992084434,
   "links": [],
   "panels": [
     {
@@ -626,12 +626,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Status",
+          "align": "auto",
           "colorMode": "row",
           "colors": [
             "rgb(255, 255, 255)",
@@ -661,6 +663,7 @@
         },
         {
           "alias": "TestSuite",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -677,6 +680,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1338,12 +1342,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Status",
+          "align": "auto",
           "colorMode": "row",
           "colors": [
             "rgb(255, 255, 255)",
@@ -1363,6 +1369,7 @@
         },
         {
           "alias": "TestCase",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1380,6 +1387,7 @@
         },
         {
           "alias": "TestSuite",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1396,6 +1404,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1655,18 +1664,20 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 6,
+        "col": null,
         "desc": false
       },
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1683,6 +1694,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1699,6 +1711,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1715,10 +1728,11 @@
         },
         {
           "alias": "Status",
+          "align": "auto",
           "colorMode": "row",
           "colors": [
-            "#E02F44",
             "#F2495C",
+            "#DEB6F2",
             "#73BF69"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
@@ -1728,52 +1742,41 @@
           "preserveFormat": false,
           "sanitize": false,
           "thresholds": [
-            "-1",
+            "0",
             "1"
           ],
           "type": "string",
           "unit": "short",
           "valueMaps": [
             {
-              "text": "ERROR",
+              "text": "TIMEOUT",
               "value": "-3"
             },
             {
-              "text": "TIMEOUT",
-              "value": "-2"
+              "text": "ASSERTFAIL",
+              "value": "-1"
             },
             {
-              "text": "BAD ASSERT",
-              "value": "-1"
+              "text": "FAILURE",
+              "value": "-2"
             },
             {
               "text": "SUCCESS",
               "value": "1"
+            },
+            {
+              "text": "NOTDEFINED",
+              "value": "0"
+            },
+            {
+              "text": "ERROR",
+              "value": "-4"
             }
           ]
         },
         {
-          "alias": "Status",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "status",
-          "preserveFormat": false,
-          "thresholds": [
-            ""
-          ],
-          "type": "string",
-          "unit": "short",
-          "valueMaps": []
-        },
-        {
           "alias": "Response Time",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1790,6 +1793,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1847,69 +1851,50 @@
       "type": "table"
     },
     {
-      "collapsed": false,
-      "datasource": "$vigie_influxdb",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 28
-      },
-      "id": 74,
-      "panels": [],
-      "title": "TestSuites",
-      "type": "row"
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$vigie_influxdb",
-      "fill": 3,
-      "fillGradient": 2,
+      "decimals": 0,
+      "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 28
       },
       "hiddenSeries": false,
-      "id": 18,
-      "interval": "",
+      "id": 182,
       "legend": {
         "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": true,
-        "rightSide": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
       },
-      "lines": true,
-      "linewidth": 0,
-      "links": [],
-      "maxPerRow": 2,
+      "lines": false,
+      "linewidth": 1,
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
-      "paceLength": 10,
       "percentage": false,
-      "pointradius": 1,
+      "pointradius": 2,
       "points": true,
       "renderer": "flot",
-      "repeat": "TestSuite",
-      "repeatDirection": "v",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "$tag_teststep",
           "groupBy": [
             {
               "params": [
@@ -1926,9 +1911,9 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"responsetime\") AS \"mean_responsetime\" FROM \"vigie\".\"dev\".\"vigie_teststep\" WHERE  \"testsuite\" =~ /^$TestSuite/  AND  $timeFilter AND $timeFilter GROUP BY time($__interval), \"teststep\" fill(none)",
+          "query": "SELECT mean(\"status\") AS \"mean_status\" FROM \"vigie\".\"dev\".\"vigie_teststep\" WHERE  \"testsuite\" =~ /^$TestSuite/  AND  $timeFilter AND $timeFilter GROUP BY time($__interval), \"teststep\" fill(none)",
           "rawQuery": true,
-          "refId": "B",
+          "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1947,14 +1932,31 @@
           "tags": []
         }
       ],
-      "thresholds": [],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": false,
+          "op": "lt",
+          "value": 0,
+          "yaxis": "left"
+        },
+        {
+          "colorMode": "ok",
+          "fill": true,
+          "line": false,
+          "op": "gt",
+          "value": 0,
+          "yaxis": "left"
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "TestCase View : $TestSuite / $TestCase",
+      "title": "Teststep Status (WIP)",
       "tooltip": {
         "shared": true,
-        "sort": 2,
+        "sort": 1,
         "value_type": "individual"
       },
       "type": "graph",
@@ -1967,12 +1969,12 @@
       },
       "yaxes": [
         {
-          "decimals": null,
-          "format": "s",
-          "label": "Response Time",
+          "decimals": 0,
+          "format": "short",
+          "label": "Status",
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "1",
+          "min": "-4",
           "show": true
         },
         {
@@ -1990,13 +1992,302 @@
       }
     },
     {
+      "collapsed": true,
+      "datasource": "$vigie_influxdb",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 74,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$vigie_influxdb",
+          "fill": 3,
+          "fillGradient": 2,
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 37
+          },
+          "hiddenSeries": false,
+          "id": 18,
+          "interval": "",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "maxPerRow": 2,
+          "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 1,
+          "points": true,
+          "renderer": "flot",
+          "repeat": "TestSuite",
+          "repeatDirection": "v",
+          "scopedVars": {
+            "TestSuite": {
+              "selected": false,
+              "text": "CI - Port Testsuite01",
+              "value": "CI - Port Testsuite01"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_teststep",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"responsetime\") AS \"mean_responsetime\" FROM \"vigie\".\"dev\".\"vigie_teststep\" WHERE  \"testsuite\" =~ /^$TestSuite/  AND  $timeFilter AND $timeFilter GROUP BY time($__interval), \"teststep\" fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TestCase View : $TestSuite / $TestCase",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "s",
+              "label": "Response Time",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$vigie_influxdb",
+          "fill": 3,
+          "fillGradient": 2,
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 47
+          },
+          "hiddenSeries": false,
+          "id": 190,
+          "interval": "",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 0,
+          "links": [],
+          "maxPerRow": 2,
+          "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 1,
+          "points": true,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "v",
+          "repeatIteration": 1578478223469,
+          "repeatPanelId": 18,
+          "scopedVars": {
+            "TestSuite": {
+              "selected": false,
+              "text": "CI - Port Testsuite02",
+              "value": "CI - Port Testsuite02"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_teststep",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"responsetime\") AS \"mean_responsetime\" FROM \"vigie\".\"dev\".\"vigie_teststep\" WHERE  \"testsuite\" =~ /^$TestSuite/  AND  $timeFilter AND $timeFilter GROUP BY time($__interval), \"teststep\" fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "TestCase View : $TestSuite / $TestCase",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "s",
+              "label": "Response Time",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "TestSuites",
+      "type": "row"
+    },
+    {
       "collapsed": false,
       "datasource": "$vigie_influxdb",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 37
       },
       "id": 22,
       "panels": [],
@@ -2017,7 +2308,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 40
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 26,
@@ -2148,7 +2439,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 53
+        "y": 51
       },
       "id": 78,
       "panels": [],
@@ -2163,7 +2454,7 @@
         "h": 31,
         "w": 24,
         "x": 0,
-        "y": 54
+        "y": 52
       },
       "hideTimeOverride": false,
       "id": 79,
@@ -2173,18 +2464,20 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 0,
+        "col": 4,
         "desc": true
       },
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss.SSS",
           "pattern": "Time",
           "type": "date"
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2201,6 +2494,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2217,6 +2511,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2234,6 +2529,7 @@
         },
         {
           "alias": "Response time",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "#E02F44",
@@ -2252,10 +2548,11 @@
         },
         {
           "alias": "Status",
+          "align": "auto",
           "colorMode": "row",
           "colors": [
-            "#E02F44",
             "#F2495C",
+            "#DEB6F2",
             "#73BF69"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
@@ -2264,7 +2561,7 @@
           "pattern": "status",
           "preserveFormat": false,
           "thresholds": [
-            "-1",
+            "0",
             "1"
           ],
           "type": "string",
@@ -2272,24 +2569,33 @@
           "valueMaps": [
             {
               "text": "ERROR",
-              "value": "-3"
-            },
-            {
-              "text": "BAD ASSERT",
-              "value": "-2"
+              "value": "-4"
             },
             {
               "text": "TIMEOUT",
+              "value": "-3"
+            },
+            {
+              "text": "ASSERT FAIL",
               "value": "-1"
+            },
+            {
+              "text": "FAILURE",
+              "value": "-2"
             },
             {
               "text": "SUCCESS",
               "value": "1"
+            },
+            {
+              "text": "NOT DEFINED",
+              "value": "0"
             }
           ]
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2348,8 +2654,8 @@
       "type": "table"
     }
   ],
-  "refresh": "5s",
-  "schemaVersion": 21,
+  "refresh": "1m",
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "Vigie",
@@ -2443,7 +2749,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -2473,6 +2779,6 @@
   },
   "timezone": "",
   "title": "Vigie Instance InfluxDB",
-  "uid": "ToSChwLWfdsdsk",
-  "version": 1
+  "uid": "ToSChwLWfdfgdssdsk",
+  "version": 6
 }

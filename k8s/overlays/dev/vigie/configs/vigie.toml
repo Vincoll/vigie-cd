@@ -5,25 +5,27 @@ environment = "dev"
 # Git clone without the repo parent name folder
 
 [host]
-  name = "Dev"
+  name = ""
   url = "http://vigie.dev.vigie.dev"
   [host.tags]
     k1 = "v1"
 
-[git]
-  clone = true
-  repo = "https://github.com/Vincoll/vigie-demo-test"
-  path = "/tmp/vigie"
+[import]
+  frequency = "1h"
+  [import.git]
+    clone = true
+    repo = "https://github.com/Vincoll/vigie-demo-test"
+    path = "/tmp/vigie/git"
 
-[testfiles]
-  included = ['/tmp/vigie/test']
-  excluded = ['']
+  [import.testfiles]
+    included = ['/tmp/vigie/git/test/']
+    excluded = ['']
 
-[variables]
-  variables = ['','']
-  included = ['/tmp/vigie/var']
-  excluded = ['']
-  fromenv = false
+  [import.variables]
+    variables = ['','']
+    included = ['/tmp/vigie/git/var/']
+    excluded = ['']
+    fromenv = false
 
 [api]
   enable = true
@@ -33,6 +35,7 @@ environment = "dev"
   stdout = true
   logfile = false
   level = "debug"
+  format = "json"
   filePath = "/tmp/vigie.log"
 
 [influxdb]
@@ -52,16 +55,16 @@ environment = "dev"
   interval = "12s"
   reminder = "1h"
   [alerting.email]
-    to = "vince.gsm@gmail.com"
-    from = "vincoll@vincoll.io"
-    username = "vincoll@vincoll.io"
-    password = "Ne38nus5W5t6"
-    smtp  = "ssl0.ovh.net"
+    to = ""
+    from = ""
+    username = ""
+    password = ""
+    smtp  = ""
     port = 587
   [alerting.slack]
     hook = ""
   [alerting.discord]
-    hook = "https://discordapp.com/api/webhooks/508396601631309855/ChGbLNXcqW2BAuntNe3eHR_VeGCkZ8225RUwOZzqn4MGwPmMTs_HpCq8oVgNfeeMz9m6"
+    hook = ""
     dev-channel = ""
     debug-channel = ""
   [alerting.webhook]

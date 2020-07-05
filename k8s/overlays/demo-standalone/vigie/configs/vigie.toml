@@ -10,20 +10,22 @@ environment = "production" # Default: production
 # Get Tests and Variables from a Git Repo instead of localy
 # Git clone without the repo parent name folder
 
-[git]
-  clone = true
-  repo = "https://github.com/Vincoll/vigie-demo-test"
-  path = "/tmp/vigie"
+[import]
+  frequency = "20s"
+  [import.git]
+    clone = true
+    repo = "https://github.com/Vincoll/vigie-demo-test"
+    path = "/tmp/vigie/git"
 
-[testfiles]
-  included = ['/tmp/vigie/test']
-  excluded = ['']
+  [import.testfiles]
+    included = ['/tmp/vigie/git/test/']
+    excluded = ['']
 
-[variables]
-  variables = ['','']
-  included = ['/tmp/vigie/var']
-  excluded = ['']
-  fromenv = false
+  [import.variables]
+    variables = ['','']
+    included = ['/tmp/vigie/git/var/']
+    excluded = ['']
+    fromenv = false
 
 [api]
   enable = true

@@ -20,7 +20,7 @@ spec:
 
       # CONTAINERS
       containers:
-      - image: influxdb:1.7.7-alpine
+      - image: influxdb:1.8-alpine
         name: influxdb
         # CONTAINER ENV Var
         envFrom:
@@ -33,7 +33,7 @@ spec:
             memory: "350Mi"
             cpu: "100m"
           limits:
-            memory: "500Mi"
+            memory: "800Mi"
             cpu: "800m"
         # CONTAINER MOUNTS
         volumeMounts:

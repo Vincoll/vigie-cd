@@ -21,3 +21,7 @@ configMapGenerator:
     - configs/dashboards/golangRuntime.json
     - configs/dashboards/vigieinstanceInflux.json
     - configs/dashboards/vigieinstanceInfluxFlux.json
+
+- name: cm-grafana-dashboards2
+  files:
+    - configs/dashboards/vigieInfluxQL_fails.json

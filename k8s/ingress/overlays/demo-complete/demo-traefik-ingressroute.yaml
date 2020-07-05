@@ -1,0 +1,49 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-tls
+  namespace: vigie-demo-complete
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`grafana.demo.vigie.dev`)
+      services:
+        - name: grafana
+          port: 3000
+  tls:
+    certResolver: levincoll
+    options:
+      name: tls-sec-1
+      # namespace: default
+    domains:
+    - main: vigie.dev
+      sans:
+      - '*.vigie.dev'
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: vigie-tls
+  namespace: vigie-demo-complete
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`vigie.demo.vigie.dev`)
+      services:
+        - name: vigie
+          port: 80
+  tls:
+    certResolver: levincoll
+    options:
+      name: tls-sec-1
+      # namespace: default
+    domains:
+    - main: vigie.dev
+      sans:
+      - '*.vigie.dev'

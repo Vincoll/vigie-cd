@@ -21,7 +21,7 @@ spec:
       # CONTAINERS
       containers:
       - name: grafana
-        image: grafana/grafana:6.5.2
+        image: grafana/grafana:7.0.5
         env:
           - name: GF_INSTALL_PLUGINS
             value: "grafana-influxdb-flux-datasource,ovh-warp10-datasource"
@@ -50,9 +50,12 @@ spec:
           subPath: grafana.ini
           readOnly: true
         - name: cm-grafana-dashboards
-          mountPath: /etc/grafana/provisioning/dashboards/vigie
+          mountPath: /etc/grafana/provisioning/dashboards/vigie/1
           readOnly: true
+        - name: cm-grafana-dashboards2
+          mountPath: /etc/grafana/provisioning/dashboards/vigie/2
 
+          readOnly: true
       # VOLUMES
       volumes:
       - name: cm-grafana-config
@@ -67,3 +70,6 @@ spec:
       - name: cm-grafana-dashboards
         configMap:
           name: cm-grafana-dashboards
+      - name: cm-grafana-dashboards2
+        configMap:
+          name: cm-grafana-dashboards2

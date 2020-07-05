@@ -1,0 +1,2 @@
+resources:
+- local-traefik-ingress.yaml
