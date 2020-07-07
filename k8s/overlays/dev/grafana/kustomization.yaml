@@ -25,3 +25,4 @@ configMapGenerator:
 - name: cm-grafana-dashboards2
   files:
     - configs/dashboards/vigieInfluxQL_fails.json
+    - configs/dashboards/vigieGoRuntimeLite.json
