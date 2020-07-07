@@ -1,5 +1,5 @@
 resources:
-- demo-traefik-ingress.yaml
+- demo-traefik-ingressroute.yaml
 
 bases:
 - ../../traefik

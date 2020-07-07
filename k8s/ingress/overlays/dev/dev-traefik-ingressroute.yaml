@@ -20,7 +20,6 @@ spec:
     - main: vigie.dev
       sans:
       - '*.dev.vigie.dev'
-      - '*.vigie.dev'
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
@@ -45,4 +44,3 @@ spec:
     - main: vigie.dev
       sans:
       - '*.dev.vigie.dev'
-      - '*.vigie.dev'

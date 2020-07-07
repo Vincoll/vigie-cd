@@ -20,7 +20,7 @@ spec:
     domains:
     - main: vigie.dev
       sans:
-      - '*.vigie.dev'
+      - '*.demo.vigie.dev'
 
 ---
 
@@ -46,4 +46,4 @@ spec:
     domains:
     - main: vigie.dev
       sans:
-      - '*.vigie.dev'
+      - '*.demo.vigie.dev'
