@@ -1,8 +1,0 @@
-resources:
-- prometheus-deployment.yaml
-- prometheus-service.yaml
-
-configMapGenerator:
-- name: cm-prometheus-config
-  files:
-    - configs/prometheus.yml

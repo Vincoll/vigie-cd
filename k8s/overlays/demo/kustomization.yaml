@@ -1,0 +1,14 @@
+# demo/vigie kustomization
+
+bases:
+- ../../base
+
+images:
+  - name: vincoll/vigie
+    newName: vincoll/vigie
+    newTag: 1.6.19
+
+configMapGenerator:
+- name: vigie-config
+  files:
+    - configs/vigie.toml

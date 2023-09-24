@@ -1,9 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vigie
+  name: vigie-api
   labels:
     app: vigie
+    service: vigie-api
+    app.kubernetes.io/name: "vigie-api"
+    app.kubernetes.io/part-of: "vigie"
+    app.kubernetes.io/version: "null"
+    app.kubernetes.io/component: "api"
 spec:
   replicas: 1
   strategy:
@@ -11,10 +16,12 @@ spec:
   selector:
     matchLabels:
       app: vigie
+      service: vigie-api
   template:
     metadata:
       labels:
         app: vigie
+        service: vigie-api
     spec:
       restartPolicy: Always
       # CONTAINERS
@@ -63,10 +70,10 @@ spec:
         - name: cm-vigie-config
           mountPath: /app/config/vigie.toml
           subPath: vigie.toml
-          readOnly: false
+          readOnly: true
 
       # Volumes
       volumes:
         - name: cm-vigie-config
           configMap:
-            name: cm-vigie-config
+            name: vigie-config

@@ -1,8 +1,0 @@
-resources:
-- demo-traefik-ingressroute.yaml
-
-bases:
-- ../../traefik
-
-# Adds namespace to all resources.
-namespace: vigie-demo-complete

@@ -1,4 +1,0 @@
-# demo/ci kustomization
-
-bases:
-- ../../../base/ci

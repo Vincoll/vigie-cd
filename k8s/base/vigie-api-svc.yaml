@@ -12,6 +12,6 @@ spec:
     - name: https
       port: 443
       targetPort: 443
-    - name: prom-exporter
+    - name: tech
       port: 9000
       targetPort: 9000
